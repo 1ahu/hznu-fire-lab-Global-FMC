@@ -35,44 +35,6 @@ $$\text{FMC} = \frac{\text{EWT}}{\text{Cm}} \times 100 \quad (\text{clamped to }
 - **Static GEDI canopy height** — V2 adds tree height from GEDI L4A V2.7 as a fixed input
   for woody vegetation, improving EWT/Cm retrieval accuracy
 
----
-
-## Repository Structure
-
-```
-FMC-CoRetrieval/
-├── README.md
-├── LICENSE
-├── requirements.txt
-├── .gitignore
-├── DATA.md                                # ⚠️  Data provenance — READ BEFORE USE
-├── notebooks/
-│   ├── 01_FMC_retrieval_baseline.ipynb    # V1: without tree height
-│   └── 02_FMC_retrieval_treeheight.ipynb  # V2: with tree height (uses derived asset)
-├── models/                                # Pre-trained model weights (.pkl)
-│   ├── Grass-LAI.pkl
-│   ├── Grass-noLAI.pkl
-│   ├── Broadleaf-LAI-TH.pkl
-│   ├── Broadleaf-noLAI-TH.pkl
-│   ├── Conifer-LAI-TH.pkl
-│   ├── Conifer-noLAI-TH.pkl
-│   ├── Shrub-LAI-TH.pkl
-│   └── Shrub-noLAI-TH.pkl
-└── data/                                  # (optional) validation data
-```
-
----
-
-## Model Architecture
-
-Both versions use a 4-layer MLP with tanh activation:
-
-```
-Input (n features) → Linear(n, 64) → tanh
-                   → Linear(64, 128) → tanh
-                   → Linear(128, 64) → tanh
-                   → Linear(64, 2)           ← outputs: EWT_norm, Cm_norm
-```
 
 | Vegetation Type | V1 Input Dim (with / without LAI) | V2 Input Dim (with / without LAI) |
 |-----------------|-----------------------------------|-----------------------------------|
@@ -88,7 +50,7 @@ Input (n features) → Linear(n, 64) → tanh
 - NSAI — Normalised Spectral Angle Index (vegetation-type-specific scale factor)
 - **TreeHeight** — GEDI L4A V2.7 canopy height, static 2019 mosaic (V2 only, woody types)
 
-**Outputs:** EWT (kg/m²), Cm (kg/m²), FMC (%, integer 0–400)
+**Outputs:** EWT (g/cm²), Cm (g/cm²), FMC (%, integer 0–400)
 
 ---
 
@@ -96,7 +58,7 @@ Input (n features) → Linear(n, 64) → tanh
 
 | Dataset | Product | Temporal Resolution | Spatial Resolution | Purpose |
 |---------|---------|---------------------|-------------------|---------|
-| MODIS MCD43A4 | NBAR Surface Reflectance | Daily | 500 m | 7 reflectance bands |
+| MODIS MCD43A4 | NBAR Surface Reflectance | Daily | 500 m | 7 reflectance bands + quality flags |
 | MODIS MCD15A3H | LAI / FPAR | 4-day composite | 500 m | LAI + quality flags |
 | MODIS MCD12Q1 | Land Cover Type 1 (IGBP) | Annual | 500 m | Vegetation classification |
 | GEDI L4A V2.7 | Canopy Height (rh98) | Static (2019) | ~25 m → resampled to 500 m | Tree height for woody types (V2) |
@@ -104,7 +66,7 @@ Input (n features) → Linear(n, 64) → tanh
 > **⚠️  Tree height data notice:** V2 uses a **pre-processed derived asset**
 > (`projects/ee-ahu1293659-11/assets/forest_height_2019_global`) created from
 > the original GEDI L4A V2.7 data. Users **must** access and cite the original
-> data. See **[DATA.md](DATA.md)** for full provenance and usage terms.
+> data. 
 
 ---
 
