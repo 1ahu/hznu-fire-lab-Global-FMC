@@ -68,69 +68,14 @@ $$\text{FMC} = \frac{\text{EWT}}{\text{Cm}} \times 100 \quad (\text{clamped to }
 > the original GEDI L4A V2.7 data. Users **must** access and cite the original
 > data. 
 
----
-
-## Quick Start
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/<your-username>/FMC-CoRetrieval.git
-cd FMC-CoRetrieval
-```
-
-### 2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Download model weights
-
-Model weights (`.pkl` files) are available from **[Zenodo / Google Drive — add link]**.
-Place all 8 `.pkl` files in the `models/` directory.
-
-### 4. Configure Earth Engine
-
-Update the configuration cell at the top of either notebook:
-
-```python
-GEE_PROJECT_ID = "your-ee-project-id"    # Replace with your GEE project
-MODEL_DIR = "./models"                    # Path to .pkl files
-```
-
-### 5. Run the notebook
-
-Open `notebooks/01_FMC_retrieval_baseline.ipynb` (V1) or
-`notebooks/02_FMC_retrieval_treeheight.ipynb` (V2) in Jupyter, Colab, or VS Code.
-
-**For Google Colab users:** The notebook auto-detects Colab and uses
-`google.colab.auth`. For local environments, run `earthengine authenticate` once beforehand.
-
----
-
-## Requirements
-
-- Google Earth Engine account with an active Cloud project
-- Python ≥ 3.10
-- PyTorch ≥ 2.0
-- See [`requirements.txt`](requirements.txt) for full dependencies
-
----
 
 ## Citation
 
 If you use this code in your research, please cite:
 
-> *[Add your paper citation here — authors, title, journal, year, DOI]*
+> *[Add paper citation here — authors, title, journal, year, DOI]*
 
----
 
-## License
-
-This project is licensed under the MIT License — see the [`LICENSE`](LICENSE) file for details.
-
----
 
 ## Notes
 
