@@ -1,5 +1,3 @@
-# hznu-fire-lab-Global-FMC
-This study proposed a global FMC retrieval method from MODIS reflectance data by coupling physically‑based radiative transfer models with artificial neural networks (ANN) and incorporating GEDI‑derived canopy height to correct for structural effects.
 # FMC Co-Retrieval from MODIS
 
 > **Joint inversion of Equivalent Water Thickness (EWT) and Dry Matter Content (Cm)
@@ -14,10 +12,10 @@ This study proposed a global FMC retrieval method from MODIS reflectance data by
 
 This repository provides two versions of a satellite-based FMC retrieval framework:
 
-| Version | Notebook | Tree Height Input | Woody Model Training |
-|---------|----------|-------------------|---------------------|
-| **V1 (Baseline)** | `notebooks/01_FMC_retrieval_baseline.ipynb` | No | Empirical |
-| **V2 (Improved)** | `notebooks/02_FMC_retrieval_treeheight.ipynb` | Yes (GEDI V2.7) | 4-Scale geometric-optical model |
+| Version | Notebook | Tree Height Input | 
+|---------|----------|-------------------|
+| **V1 (Baseline)** | `notebooks/01_FMC_retrieval_baseline.ipynb` | No |
+| **V2 (Improved)** | `notebooks/02_FMC_retrieval_treeheight.ipynb` | Yes (GEDI V2.7) |
 
 Both versions use MODIS reflectance (MCD43A4), LAI (MCD15A3H), and land cover (MCD12Q1)
 to drive a 4-layer MLP that jointly predicts EWT and Cm. FMC is then computed as:
