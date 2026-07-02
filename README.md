@@ -1,6 +1,6 @@
 # FMC Co-Retrieval from MODIS
 
-> **Joint inversion of Equivalent Water Thickness (EWT) and Dry Matter Content (Cm)
+> **Joint inversion of Equivalent Water Thickness (EWT) and Dry Matter Content (Cm/DMC)
 > for Fuel Moisture Content (FMC) retrieval using Google Earth Engine + PyTorch MLP.**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) 
