@@ -4,7 +4,7 @@
 > for Fuel Moisture Content (FMC) retrieval using Google Earth Engine + PyTorch MLP.**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) 
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+
 
 ---
 
